@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.build.json",
+  "compilerOptions": {
+    "outDir": "./typeorm-dist"
+  },
+  "include": [
+    "src/configuration/**/*",
+    "src/utils/logger/**/*",
+    "src/dbs/typeorm/**/*"
+  ],
+  "exclude": ["node_modules", "src/**/*.spec.*"]
+}

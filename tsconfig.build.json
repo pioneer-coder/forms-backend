@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    "inlineSources": true,
+    "lib": ["ES2022"],
+    "module": "Node16",
+    "noEmitHelpers": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "outDir": "./dist",
+    "paths": {
+      "@/*": ["*"],
+      "@test/*": ["../test/*"],
+      "@shared/typings/*": ["../../typings/*"]
+    },
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "sourceRoot": "/",
+    "strict": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": false,
+    "target": "ES2022",
+    "types": [
+      "node"
+    ],
+    "typeRoots": ["src/typings", "node_modules/@types"]
+  },
+  "include": ["src/**/*", ".env"],
+  "exclude": ["node_modules", "src/**/*.spec.*"]
+}

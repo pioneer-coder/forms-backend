@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.build.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "types": [
+      "chai-as-promised",
+      "chai",
+      "dirty-chai",
+      "mocha",
+      "node",
+      "sinon-chai"
+    ]
+  },
+  "include": ["scripts/**/*.ts", ".github/**/*.ts", "src/**/*.ts", "test/**/*.ts"],
+  "exclude": ["node_modules"]
+}

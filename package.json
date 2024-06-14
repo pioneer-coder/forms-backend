@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "prebuild": "rm -rf dist",
-    "build": "cross-env NODE_OPTIONS=--max_old_space_size=4096 yarn run --silent tsc --project tsconfig.build.json && yarn tsc-alias",
+    "build": "cross-env NODE_OPTIONS=--max_old_space_size=4096 yarn run --silent tsc --project tsconfig.build.json && yarn tsc-alias --project tsconfig.build.json",
     "build:check": "cross-env NODE_OPTIONS=--max_old_space_size=4096 yarn run --silent tsc --skipLibCheck --noEmit",
     "build:devdotenv": "yarn run:ts --tsconfig tsconfig.just-configuration.json ./scripts/createDotEnv.ts --tier development --out .env.development",
     "build:qadotenv": "yarn run:ts --tsconfig tsconfig.just-configuration.json ./scripts/createDotEnv.ts --tier qa --out .env.qa",
@@ -44,6 +44,9 @@
   "author": "mikael@noodle.shop",
   "dependencies": {
     "@faker-js/faker": "^8.4.1",
+    "@sentry/node": "^8.8.0",
+    "@sentry/profiling-node": "^8.8.0",
+    "axios": "^1.7.2",
     "bluebird": "^3.7.2",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",

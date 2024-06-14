@@ -1,13 +1,23 @@
-const captureException = (_error: unknown, _extra?: Record<string, unknown>): void => {};
-const setCorrelationId = (_str: string): void => {};
-const setClientVersion = (_str: string): void => {};
-const gracefulShutdown = (_n: number): void => {};
-const setUser = (_user: { id: string | null | undefined, isOnBehalfOf: boolean }): void => {};
+import * as Sentry from '@sentry/node';
+
+import addSentryTagMiddleware from './addSentryTagMiddleware.js';
+import gracefulShutdown from './gracefulShutdown.js';
+import initialize from './initialize.js';
+import setClientVersion from './setClientVersion.js';
+import setCorrelationId from './setCorrelationId.js';
+import setUser from './setUser.js';
+import setupExpressErrorHandler from './setupExpressErrorHandler.js';
+import severityMiddlewareFactory from './severityMiddlewareFactory.js';
+
+initialize();
 
 export default {
-  captureException,
+  addSentryTagMiddleware,
+  captureException: Sentry.captureException,
   gracefulShutdown,
   setClientVersion,
   setCorrelationId,
   setUser,
+  setupExpressErrorHandler,
+  severityMiddlewareFactory,
 };

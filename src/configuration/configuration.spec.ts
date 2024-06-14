@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import configuration from './index.js';
-import { Configuration } from './typings.js';
+
+import configuration, { type Configuration } from './index.js';
 
 describe('configuration', function () {
   it('should let you override a configuration', function () {
@@ -22,6 +22,7 @@ describe('configuration', function () {
   it('should remove the added configuration key', function () {
     type WithHello = Configuration & { HELLO?: string };
     const c = configuration as WithHello;
-    expect(c.HELLO).to.equal(undefined);
+    // @ts-ignore
+    expect(c.HELLO).to.be.undefined;
   });
 });

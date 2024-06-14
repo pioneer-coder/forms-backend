@@ -5,7 +5,7 @@
   },
   "include": [
     "src/configuration/**/*",
-    "src/utils/logger/**/*",
+    "src/utils/**/*",
     "src/dbs/typeorm/**/*"
   ],
   "exclude": ["node_modules", "src/**/*.spec.*"]

@@ -9,6 +9,7 @@ import {
 import allowedMethods from '@/middleware/allowedMethods.js';
 import { noodleApiKey } from '@/middleware/index.js';
 import { cidLocalStorage } from '@/utils/correlationId/index.js';
+import sentry from '@/interfaces/sentry/index.js';
 
 const router = Router();
 
@@ -51,6 +52,14 @@ router
   .route('/test-errors/unauthorized')
   .get((_req, _res, next) => {
     next(new UnauthorizedError('Nope, I do not know who you are'));
+  })
+  .all(allowedMethods('GET'));
+
+router
+  .route('/test-errors/internal-error')
+  .get((_req, res, _next) => {
+    sentry.captureException(new Error('Something bad happened internally'));
+    res.status(200).json({ message: 'OK' });
   })
   .all(allowedMethods('GET'));
 

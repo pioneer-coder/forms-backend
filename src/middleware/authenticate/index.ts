@@ -56,7 +56,7 @@ const authenticate = <Params, ResBody, ReqBody, ReqQuery>(
 
   sentry.setUser(req.user
     ? { id: req.user.id, isOnBehalfOf: req.user.isOnBehalfOf || false }
-    : { id: null, isOnBehalfOf: false });
+    : null);
 
   next();
 };

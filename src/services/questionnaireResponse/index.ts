@@ -33,10 +33,13 @@ class QuestionnaireResponseService extends BaseService<EVENT_PARAMS> {
     questionnaire: Pick<pgModels.Questionnaire, 'creatorId'>;
     requester: { id: string };
   }): Promise<boolean> {
-    return await noodleApi.hasCreatorPermissions({
+    const response = await noodleApi.hasCreatorPermissions({
       creatorId: questionnaire.creatorId,
-      requesterId: requester.id,
+      personId: requester.id,
+      scope: 'is-member',
     });
+
+    return response.hasPermission;
   }
 
   async hasPermissions({

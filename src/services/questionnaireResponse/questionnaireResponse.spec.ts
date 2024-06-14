@@ -42,7 +42,7 @@ describe('services/questionnaireResponse', function () {
         questionnaireId: questionnaire.id,
       });
 
-      doubleReturns(noodleApi.hasCreatorPermissions, false);
+      doubleReturns(noodleApi.hasCreatorPermissions, { hasPermission: false });
 
       this.customer = customer;
       this.questionnaire = questionnaire;
@@ -65,7 +65,7 @@ describe('services/questionnaireResponse', function () {
 
     it('should let a creator team member submit an answer', async function () {
       const teamMemberPersonId = nanoid();
-      doubleReturns(noodleApi.hasCreatorPermissions, true);
+      doubleReturns(noodleApi.hasCreatorPermissions, { hasPermission: true });
 
       const error = await getAsyncThrownError(quetionnaireResponseService.updateQuestionnaireResponses({
         questionnaireId: this.questionnaire.id,

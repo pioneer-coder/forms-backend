@@ -16,8 +16,7 @@ class QuestionnaireTemplateService {
       const cid = getCorrelationId();
       const error = new ServerError('Reached depth limit getting list items for template');
       log.error(error, 'Reached depth limit getting list items for template');
-
-      sentry.captureException(error, { correlationId: cid });
+      sentry.captureException(error, { tags: { correlationId: cid } });
       return listTemplate;
     }
 
